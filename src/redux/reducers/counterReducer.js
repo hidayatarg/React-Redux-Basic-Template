@@ -7,8 +7,7 @@ const initialState = {
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.INCREASE_COUNTER:
-      state.counter++
-      return  state
+      return {...state, counter: state.counter + action.payload}
     case actionTypes.DECREASE_COUNTER:
       return {...state, counter: state.counter - action.payload}
     case actionTypes.INCREASE_BY_TWO_COUNTER:

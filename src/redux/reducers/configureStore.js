@@ -1,9 +1,9 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 
-import rootReducers from "./index"
+import rootReducer from "./index"
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant'
 
 export default function configureStore(){
-    //this will warn us if we accidentally mutate Redux state.
-    return createStore(rootReducers, applyMiddleware(reduxImmutableStateInvariant()))
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose 
+    return createStore(rootReducer, composeEnhancers(applyMiddleware(reduxImmutableStateInvariant())))
 }

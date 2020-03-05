@@ -13,7 +13,7 @@ class Counter extends Component {
 
 function mapStateToProps(state){
     return {
-        counter: state.counterReducer
+        counter: state.counterReducer.counter
     }
 }
 

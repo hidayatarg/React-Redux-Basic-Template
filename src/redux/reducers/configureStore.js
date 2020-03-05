@@ -1,7 +1,9 @@
-import {createStore} from "redux"
+import { createStore, applyMiddleware } from 'redux'
 
-import reducers from "./index"
+import rootReducers from "./index"
+import reduxImmutableStateInvariant from 'redux-immutable-state-invariant'
 
 export default function configureStore(){
-    return createStore(reducers)
+    //this will warn us if we accidentally mutate Redux state.
+    return createStore(rootReducers, applyMiddleware(reduxImmutableStateInvariant()))
 }
